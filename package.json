@@ -1,0 +1,17 @@
+{
+    "name": "nodejs examples",
+    "description": "Some sample nodejs apps",
+    "author": {
+        "name": "Patrick Fitzgerald",
+        "email": "auskast03@gmail.com"
+    },
+    "version": "0.0.1",
+    "dependencies": {
+        "mysql": "2.0.0-alpha8"
+    },
+    "devDependencies": {
+    },
+    "engines": {
+        "node": "*"
+    }
+}
