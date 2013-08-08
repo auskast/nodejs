@@ -13,28 +13,6 @@ server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
 
-// Sample methods
-function echo(request, response, next) {
-    response.send('hello ' + request.params.name);
-    return next();
-}
-
-function create(request, response, next) {
-    response.send(201, Math.random().toString(36).substr(3, 8));
-    return next();
-}
-
-function del(request, response, next) {
-    response.send(204);
-    return next();
-}
-
-server.post('/hello', create);
-server.put('/hello', echo);
-server.get('/hello/:name', echo);
-server.head('/hello/:name', echo);
-server.del('/hello/:name', del);
-
 // Buyer
 var buyers = {};
 
