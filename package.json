@@ -1,5 +1,5 @@
 {
-    "name": "nodejs examples",
+    "name": "nodejs-examples",
     "description": "Some sample nodejs apps",
     "author": {
         "name": "Patrick Fitzgerald",
@@ -7,10 +7,10 @@
     },
     "version": "0.0.1",
     "dependencies": {
-        "mysql": "2.0.0-alpha8"
+        "mysql": "~2.0.0-alpha8",
+        "restify": "~2.6.0"
     },
-    "devDependencies": {
-    },
+    "devDependencies": {},
     "engines": {
         "node": "*"
     }

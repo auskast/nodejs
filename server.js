@@ -1,36 +1,19 @@
-/*jslint white: true, maxerr: 50, indent: 4, nomen: true, vars: true, sloppy: true*/
 var http = require('http'),
-    url = require('url'),
-    mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    user: 'rc',
-    password: 'rc',
-    database: 'rconn'
-});
+    url = require('url');
 
 function start(route) {
     function onRequest(request, response) {
+        // Handle favicon
+        if (request.url === '/favicon.ico') {
+            response.writeHead(200, {'Content-Type': 'image/x-icon'});
+            response.end();
+            return;
+        }
+
         var pathname = url.parse(request.url).pathname;
         console.log('Request for ' + pathname + ' received.');
 
-        route(pathname);
-
-        connection.query('select * from marketplaces;', function(error, rows, fields) {
-            if(error) {
-                response.writeHead(501);
-                response.write('Error executing SQL: ' + error.message);
-                response.end();
-            } else {
-                response.writeHead(200, {'Content-Type': 'application/json'});
-                response.write(JSON.stringify(rows));
-                response.end();
-            }
-        });
-
-//        response.writeHead(200, {'Content-Type': 'text/plain'});
-//        response.write('Hello World');
-//        response.end();
+        route(pathname, request, response);
     }
 
     http.createServer(onRequest).listen(8888);
