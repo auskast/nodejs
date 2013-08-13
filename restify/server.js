@@ -106,6 +106,6 @@ server.get('/', function root(req, res, next) {
     return next();
 });
 
-server.listen(8888, 'pfitzgerald-pro', function() {
+server.listen(8888, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
